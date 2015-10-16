@@ -22,5 +22,5 @@ if keystroke  == "p"
 elsif keystroke == "i"
   puts instructions
 else
-  raise "You have quit the game"
+  puts "You have quit the game"
 end
