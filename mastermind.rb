@@ -29,21 +29,6 @@ def cheat
   print PLAY.join
 end
 
-if keystroke  == "p"
-  puts play_message
-elsif keystroke == "i"
-  puts instructions
-elsif keystroke == "c"
-  print "#{cheat}\n"
-else
-  puts "You have quit the game"
-end
-
-guess = gets.chomp
-
-@guess = guess.chars
-@flag = []
-
 def answer
   @i = 0
   PLAY.map.with_index do |answer, index|
@@ -54,19 +39,35 @@ def answer
   end
 end
 
-def play(guess = @guess)
-  if guess.length < 4
+def play
+  guess = gets.chomp
+
+  @guess = guess.chars
+
+  @flag = []
+  answer
+
+  if @guess.length < 4
     puts "Your guess is too short!"
     play
-  elsif guess.length > 4
+  elsif @guess.length > 4
     puts "Your guess is too long!"
     play
-  elsif @flag.join.to_i < 4
-    puts "Not yet!"
+  elsif @flag.reduce(:+) < 4
+    puts "You got #{@flag.reduce(:+)} colors correct"
     play
-  elsif @flag.join.to_i == 4
+  elsif @flag.reduce(:+) == 4
     puts "You win!"
   end
 end
 
-play
+if keystroke  == "p"
+  puts play_message
+  play
+elsif keystroke == "i"
+  puts instructions
+elsif keystroke == "c"
+  print "#{cheat}\n"
+else
+  puts "You have quit the game"
+end
