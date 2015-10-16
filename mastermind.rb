@@ -19,10 +19,20 @@ def instructions
   "To play the game use your keyboard."
 end
 
+COLORS = ["r", "b", "g", "y"]
+
+PLAY = [COLORS[rand(0..3)], COLORS[rand(0..3)], COLORS[rand(0..3)], COLORS[rand(0..3)]]
+
+def cheat
+  print PLAY.join
+end
+
 if keystroke  == "p"
   puts play_message
 elsif keystroke == "i"
   puts instructions
+elsif keystroke == "c"
+  print "#{cheat}\n"
 else
   puts "You have quit the game"
 end
