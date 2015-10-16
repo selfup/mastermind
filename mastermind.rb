@@ -1,3 +1,5 @@
+require "pry"
+
 def welcome
   "Welcome to MASTERMIND
 
@@ -36,3 +38,35 @@ elsif keystroke == "c"
 else
   puts "You have quit the game"
 end
+
+guess = gets.chomp
+
+@guess = guess.chars
+@flag = []
+
+def answer
+  @i = 0
+  PLAY.map.with_index do |answer, index|
+    if answer == @guess[index]
+      @i += 1
+    end
+    @flag << @i
+  end
+end
+
+def play(guess = @guess)
+  if guess.length < 4
+    puts "Your guess is too short!"
+    play
+  elsif guess.length > 4
+    puts "Your guess is too long!"
+    play
+  elsif @flag.join.to_i < 4
+    puts "Not yet!"
+    play
+  elsif @flag.join.to_i == 4
+    puts "You win!"
+  end
+end
+
+play
