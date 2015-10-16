@@ -1,9 +1,11 @@
-require 'pry'
-
-puts "Welcome to MASTERMIND
+def welcome
+  "Welcome to MASTERMIND
 
 Would you like to (p)lay, read the (i)nstructions, or (q)uit?
 >"
+end
+
+puts welcome
 
 keystroke = gets.chomp
 
