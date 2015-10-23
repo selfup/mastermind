@@ -1,7 +1,7 @@
-require 'pry'
-require_relative 'logic'
+require_relative 'input_output'
 require_relative 'play'
-include Logic
+include InputOutput
+include Answer
 
 puts welcome
 

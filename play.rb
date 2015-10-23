@@ -1,18 +1,12 @@
-require_relative 'logic'
+require_relative 'answer'
 
 class Play
-include Logic
-
-  attr_reader :guess, :flag
-
-  def initialize
-    @guess = keystroke
-    @flag = []
-  end
+include Answer
 
   def self.play
-    guess = @guess.chars
-
+    guess = gets.chomp
+    @guess = guess.chars
+    @flag = []
     answer
 
     if guess == "c"
